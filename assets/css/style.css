@@ -95,3 +95,44 @@ body {
     overflow-y: auto;
   }
 }
+
+
+/* CRUD */ 
+
+
+/* This class is optional */
+.container {
+  margin: 50px auto 25px;
+}
+.text-center {
+  text-align: center;
+}
+
+
+.tk-crud-table {
+  margin: 0 auto;
+  border-collapse: collapse;
+}
+
+.tk-crud-table > thead > tr > th {
+  background: #afafaf;
+  height: 30px;
+  line-height: 30px;
+  border: solid 2px black;
+}
+
+.tk-crud-table > tbody > tr > td {
+  border: solid 2px black;
+}
+
+.tk-crud-table > tbody > tr > td.active {
+  outline: solid 3px black;
+}
+
+.tk-crud-table > tbody > tr > td > input[type="text"] {
+  width: 120px;
+  height: 30px;
+  padding: 0 5px;
+  border: none;
+  outline: none;
+}
