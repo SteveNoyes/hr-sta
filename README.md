@@ -22,8 +22,8 @@
 
 ### Links
 
-- Solution URL: [GitHub Repo](https://your-solution-url.com)
-- Live Site URL: [GitHub Pages](https://pages.github.com/)
+- Solution URL: [GitHub Repo](https://github.com/SteveNoyes/hr-sta)
+- Live Site URL: [GitHub Pages](https://stevenoyes.github.io/hr-sta/)
 
 ## My process
 
