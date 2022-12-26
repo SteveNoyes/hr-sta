@@ -225,7 +225,7 @@ Table{
   z-index:0;
 }
 
-#advancedTabClose {
+.advancedTabClose {
   color: #666;
   text-decoration: none;
 }

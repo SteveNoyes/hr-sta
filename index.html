@@ -121,7 +121,7 @@
                     <div style="margin-bottom:6px;">
                       <span>Reoccurs:</span>
                       <span style="float:right;">
-                          <a id="advancedTabClose" href="#" onclick="$('#incomeAdvancedTab').collapse('hide');">&#10006;</a>
+                          <a class="advancedTabClose" href="#" onclick="$('#incomeAdvancedTab').collapse('hide');">&#10006;</a>
                         </span>
                     </div>
                     <table width="100%" style="margin-bottom:6px;">
@@ -188,14 +188,14 @@
               <div id="costAdvancedTab" class="collapse retractOnUnfocus">
                 <!--Advanced Tab-->
                 <div style="padding:10px;">
-                  <div id='costAdvancedTabContainer'>
-                    <div style='margin-bottom:6px;'>
+                  <div id="costAdvancedTabContainer">
+                    <div style="margin-bottom:6px;">
                       <span>Reoccurs:</span>
-                      <span style='float:right;'>
-                          <a id='advancedTabClose' href="#" onclick='$("#costAdvancedTab").collapse("hide");'>&#10006;</a>
+                      <span style="float:right;">
+                          <a class="advancedTabClose" href="#" onclick="$('#costAdvancedTab').collapse('hide');">&#10006;</a>
                         </span>
                     </div>
-                    <table width='100%' style='margin-bottom:6px;'>
+                    <table width="100%" style="margin-bottom:6px;">
                       <tr>
                         <td><input type="radio" name="period" value="1"> <span class="inputContainerLabels">Weekly</span></td>
                         <td><input type="radio" name="period" value="2"> <span class="inputContainerLabels">Bi-Weekly</span></td>
@@ -203,17 +203,17 @@
                         <td>
                           <input id="costHiddenTermRadio" type="radio" name="period" value="0">
                           <span class="inputContainerLabels"> Days&nbsp;</span>
-                          <input id='costTermDaysTextBox' type="number" step="1" min="1" placeholder="xx" style='width:40px;' onclick='checkHidden("#costHiddenTermRadio");'>
+                          <input id="costTermDaysTextBox" type="number" step="1" min="1" placeholder="xx" style="width:40px;" onclick="checkHidden('#costHiddenTermRadio');">
                         </td>
                       </tr>
                     </table>
                     <div class="fullWidthBar"></div>
                     <!--divider-->
-                    <table width='100%'>
+                    <table width="100%">
                       <tr>
-                        <td><input type="date" style='width:140px; font-family: "roboto";'></td>
-                        <td><input type="date" style='width:140px; font-family: "roboto";' id='costEndTerm'></td>
-                        <td><input type='checkbox' id='costInfiniteTerm'></td>
+                        <td><input type="date" style="width:140px; font-family: 'roboto';"></td>
+                        <td><input type="date" style="width:140px; font-family: 'roboto';" id="costEndTerm"></td>
+                        <td><input type="checkbox" id="costInfiniteTerm"></td>
                       </tr>
                       <tr>
                         <td><span class="inputContainerLabels">Next Due</span></td>
