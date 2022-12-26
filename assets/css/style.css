@@ -321,7 +321,7 @@ Table{
   border-left:1px solid #ffffff
 }
 
-#innerVariableListContainer{
+.innerVariableListContainer{
   margin-bottom:8px;
   width:379px;
 }
