@@ -185,7 +185,7 @@ Table{
   border-right: 1px solid #196fb8;
 }
 
-#inputContainer {
+.inputContainer {
   margin-top: 10px;
   padding: 10px;
   background-color: #eeeeee;
@@ -402,7 +402,9 @@ Table{
   animation: pulse 2s infinite;
 }
 
-@keyframes pulse {
+@
+
+keyframes pulse {
   0% {
     -webkit-box-shadow: 0 0 0 0 rgba(0,75,255, 1);
   }
