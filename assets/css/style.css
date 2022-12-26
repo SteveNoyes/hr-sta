@@ -206,11 +206,11 @@ Table{
   text-decoration: none;
 }
 
-#inputContainerTable {
+.inputContainerTable {
   border-spacing: 0;
 }
 
-#inputContainerTable tr{
+.inputContainerTable tr{
   width:380px;
   height:32px;
 }
