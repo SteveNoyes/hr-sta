@@ -6,13 +6,20 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <!-- Font Awesome CDN -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css" integrity="sha512-MV7K8+y+gLIBoVD59lQIYicR65iaqukzvf/nwasF0nqhPay5w/9lJmVM2hMDcnK1OnMGCdVK+iQrJ7lzPJQd1w==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+  <!-- Roboto Font -->
+  <link href="https://fonts.googleapis.com/css?family=Roboto:400,700" rel="stylesheet">
   <!-- Title -->
   <title>Human Assets Management</title>
+  <!-- jQuery library -->
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <!-- Latest compiled JavaScript -->
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
   <!-- CSS -->
   <link rel="stylesheet" href="./assets/css/reset.css">
   <link rel="stylesheet" href="./assets/css/style.css">
 </head>
-<body>
+<body onresize="closeDropdowns()">
   <div class="nav">
     <input type="checkbox" id="nav-check">
     <div class="nav-header">
@@ -57,23 +64,697 @@
       <h3>Recruitment and On-Boarding</h3>
       <p>is about selecting the right people with the right competencies.</p>
     </div>
+
+
+
+
+
+
+
+
+    
+
+
+
+
+
+
+
+
+
+
+    <div class="SuperContainer">
+      <!--Title Container-->
+      <div class='titleBarContainer>Personal Finance Simulator</div>
+  
+      <div>
+        <!--Inputs Container-->
+        <table class='inputsSection'>
+          <tr>
+            <td class='incomeContainer' valign='top'>
+              <!--Income Container-->
+              <div class='sectionHead'>Income</div>
+              <div id='fullWidthBar' style='background-color:rgba(0,0,0,.5);'></div>
+              <div id='inputContainer'>
+                <table id='inputContainerTable'>
+                  <tr>
+                    <td valign='top'><span style='line-height:2.5;' id='inputContainerLabels'>Name of Income:</span></td>
+                    <td valign='top' colspan='2'><input type="text" style='width:220px; font-family: "roboto";'></td>
+                    <td valign='top' style='width:24px; ' align='right'><input type="button" style='width:24px;' value='+'></td>
+                  </tr>
+                  <tr style='width:380px'>
+                    <td style='width:140px; padding-right:10px;'>$ <input type="number" step="0.01" placeholder="xx.xx" style='width:80px;'></td>
+                    <td style='width:125px; padding-right:10px;'><input type="date" style='width:140px; font-family: "roboto";'></td>
+                    <td style='width:95px; padding-right:10px;'><input id='incomeRepeatCheck' type='checkbox'> <span id='inputContainerLabels' title="This is a regular source of income.">Repeat</span></td>
+  
+                  </tr>
+                  <tr>
+                    <td valign='top' style='padding-left:11px;'><span id='inputContainerLabels'>Income Rate</span></td>
+                    <td valign='top'><span id='inputContainerLabels'>Date of Receipt</span></td>
+                    <td height='30px' colspan='2' valign='bottom'><a data-toggle="collapse" data-target="#incomeAdvancedTab" id='inputContainerAdvancedLabel'>Advanced Repeat &#9660;</a></td>
+                  </tr>
+                </table>
+              </div>
+              <div id="incomeAdvancedTab" class="collapse retractOnUnfocus">
+                <!--Advanced Tab-->
+                <div style='padding:10px;'>
+                  <div id='IncomeAdvancedTabContainer'>
+                    <div style='margin-bottom:6px;'>
+                      <span>Reoccurs:</span>
+                      <span style='float:right;'>
+                          <a id='advancedTabClose' href="#" onclick='$("#incomeAdvancedTab").collapse("hide");'>&#10006;</a>
+                        </span>
+                    </div>
+                    <table width='100%' style='margin-bottom:6px;'>
+                      <tr>
+                        <td><input type="radio" name="period" value="1"> <span id='inputContainerLabels'>Weekly</span></td>
+                        <td><input type="radio" name="period" value="2"> <span id='inputContainerLabels'>Bi-Weekly</span></td>
+                        <td><input type="radio" name="period" value="3"> <span id='inputContainerLabels'>Monthly</span></td>
+                        <td>
+                          <input id="incomeHiddenTermRadio" type="radio" name="period" value="0">
+                          <span id='inputContainerLabels'> Days&nbsp;</span>
+                          <input id='incomeTermDaysTextBox' type="number" step="1" min="1" placeholder="xx" style='width:40px;' onclick='checkHidden("#incomeHiddenTermRadio");'>
+                        </td>
+                      </tr>
+                    </table>
+                    <div id='fullWidthBar'></div>
+                    <!--divider-->
+                    <table width='100%'>
+                      <tr>
+                        <td><input type="date" style='width:140px; font-family: "roboto";'></td>
+                        <td><input type="date" style='width:140px; font-family: "roboto";' id='incomeEndTerm'></td>
+                        <td><input type='checkbox' id='incomeInfiniteTerm'></td>
+                      </tr>
+                      <tr>
+                        <td><span id='inputContainerLabels'>Next Pay</span></td>
+                        <td><span id='inputContainerLabels'>End Pay</span></td>
+                        <td><span id='inputContainerLabels'>&#8734;</span></td>
+                      </tr>
+                    </table>
+                  </div>
+                </div>
+              </div>
+              <!--End Advanced Tab-->
+              <span style='float:right;padding-top:2px;padding-right:1px;font-size:8pt; '>
+                  <a data-toggle="modal" data-target="#addCustomIncomeModal">+ Add Custom</a>
+                </span>
+            </td>
+            <!--End Income Container-->
+  
+  
+            <td class='costContainer' valign='top'>
+              <!--Cost Container-->
+              <div class='sectionHead'>Cost</div>
+              <div id='fullWidthBar' style='background-color:rgba(0,0,0,.5);'></div>
+              <div id='inputContainer'>
+                <table id='inputContainerTable'>
+                  <tr style='width:100%;height:32px;'>
+                    <td valign='top'><span style='line-height:2.5;' id='inputContainerLabels'>Name of Cost:</span></td>
+                    <td valign='top' colspan='2'><input type="text" style='width:220px; font-family: "roboto";'></td>
+                    <td style='width:24px; ' align='right' valign='top'><input type="button" style='width:223x;' value='+'></td>
+                  </tr>
+                  <tr style='width:380px'>
+                    <td style='width:140px; padding-right:10px;'>$ <input type="number" step="0.01" placeholder="xx.xx" style='width:80px;'></td>
+                    <td style='width:125px; padding-right:10px;'><input type="date" style='width:140px; font-family: "roboto";'></td>
+                    <td style='width:95px; padding-right:10px;'><input id='costRepeatCheck' type='checkbox'> <span id='inputContainerLabels' title="This is a regular payment.">Repeat</span></td>
+  
+                  </tr>
+                  <tr>
+                    <td valign='top' style='padding-left:11px;'><span id='inputContainerLabels'>Payment Rate</span></td>
+                    <td valign='top'><span id='inputContainerLabels'>Due Date</span></td>
+                    <td valign='bottom' colspan='2' height='30px'><a data-toggle="collapse" data-target="#costAdvancedTab" id='inputContainerAdvancedLabel'>Advanced Repeat &#9660;</a></td>
+                  </tr>
+                </table>
+              </div>
+              <div id="costAdvancedTab" class="collapse retractOnUnfocus">
+                <!--Advanced Tab-->
+                <div style='padding:10px;'>
+                  <div id='costAdvancedTabContainer'>
+                    <div style='margin-bottom:6px;'>
+                      <span>Reoccurs:</span>
+                      <span style='float:right;'>
+                          <a id='advancedTabClose' href="#" onclick='$("#costAdvancedTab").collapse("hide");'>&#10006;</a>
+                        </span>
+                    </div>
+                    <table width='100%' style='margin-bottom:6px;'>
+                      <tr>
+                        <td><input type="radio" name="period" value="1"> <span id='inputContainerLabels'>Weekly</span></td>
+                        <td><input type="radio" name="period" value="2"> <span id='inputContainerLabels'>Bi-Weekly</span></td>
+                        <td><input type="radio" name="period" value="3"> <span id='inputContainerLabels'>Monthly</span></td>
+                        <td>
+                          <input id="costHiddenTermRadio" type="radio" name="period" value="0">
+                          <span id='inputContainerLabels'> Days&nbsp;</span>
+                          <input id='costTermDaysTextBox' type="number" step="1" min="1" placeholder="xx" style='width:40px;' onclick='checkHidden("#costHiddenTermRadio");'>
+                        </td>
+                      </tr>
+                    </table>
+                    <div id='fullWidthBar'></div>
+                    <!--divider-->
+                    <table width='100%'>
+                      <tr>
+                        <td><input type="date" style='width:140px; font-family: "roboto";'></td>
+                        <td><input type="date" style='width:140px; font-family: "roboto";' id='costEndTerm'></td>
+                        <td><input type='checkbox' id='costInfiniteTerm'></td>
+                      </tr>
+                      <tr>
+                        <td><span id='inputContainerLabels'>Next Due</span></td>
+                        <td><span id='inputContainerLabels'>End Payment</span></td>
+                        <td><span id='inputContainerLabels'>&#8734;</span></td>
+                      </tr>
+                    </table>
+                  </div>
+                </div>
+              </div>
+              <!--End Advanced Tab-->
+              <span style='float:right;padding-top:2px;padding-right:1px;font-size:8pt; '>
+                  <a data-toggle="modal" data-target="#addCustomIncomeModal">+ Add Withholding</a>
+                </span>
+            </td>
+            <!--End Cost Container-->
+  
+          </tr>
+        </table>
+      </div>
+      <!--End Inputs Container-->
+      
+      <div id='sectionBreak'></div>
+  
+  
+      <!--start variable list Container-->
+      <div id='variableListContiner'>
+        <!--list Container-->
+        <table id='variableListTable'>
+          <tr>
+            <td id='innerVariableListColumn' valign='top'>
+              <!--Income list Container-->
+              <div class='sectionHead' id='innerVariableListContainer'>Income List</div>
+              <div id='fullWidthBar'></div>
+              <div id='variableListTitleTableContainer'>
+                <table id='variableListTitleTable'>
+                  <tr>
+                    <td width='160px'>Title</td>
+                    <td width='80px'>Rate</td>
+                    <td width='40px'>&nbsp;</td>
+                  </tr>
+                </table>
+              </div>
+              <div id='variableListInnerTableContainer'>
+                <table id='variableListInnerTable'>
+                  <tr>
+                    <td width='160px'>Title</td>
+                    <td width='80px'>19.95</td>
+                    <td width='40px'>Edit</td>
+                  </tr>
+                  <tr>
+                    <td>Title</td>
+                    <td>19.95</td>
+                    <td>Edit</td>
+                  </tr>
+                  <tr>
+                    <td>Title</td>
+                    <td>19.95</td>
+                    <td>Edit</td>
+                  </tr>
+                  <tr>
+                    <td>Title</td>
+                    <td>19.95</td>
+                    <td>Edit</td>
+                  </tr>
+                  <tr>
+                    <td>Title</td>
+                    <td>19.95</td>
+                    <td>Edit</td>
+                  </tr>
+                  <tr>
+                    <td>Title</td>
+                    <td>19.95</td>
+                    <td>Edit</td>
+                  </tr>
+                  <tr>
+                    <td>Title</td>
+                    <td>19.95</td>
+                    <td>Edit</td>
+                  </tr>
+                  <tr>
+                    <td>Title</td>
+                    <td>19.95</td>
+                    <td>Edit</td>
+                  </tr>
+                  <tr>
+                    <td>Title</td>
+                    <td>19.95</td>
+                    <td>Edit</td>
+                  </tr>
+                  <tr>
+                    <td>Title</td>
+                    <td>19.95</td>
+                    <td>Edit</td>
+                  </tr>
+                </table>
+              </div>
+            </td>
+            <td id='innerVariableListColumnRight' valign='top'>
+              <!--Income list Container-->
+              <div class='sectionHead' id='innerVariableListContainer'>Cost List</div>
+              <div id='fullWidthBar'></div>
+              <div id='variableListTitleTableContainer'>
+                <table id='variableListTitleTable'>
+                  <tr>
+                    <td width='160px'>Title</td>
+                    <td width='80px'>Rate</td>
+                    <td width='40px'>&nbsp;</td>
+                  </tr>
+                </table>
+              </div>
+              <div id='variableListInnerTableContainer'>
+                <table id='variableListInnerTable'>
+                  <tr>
+                    <td width='160px'>Title</td>
+                    <td width='80px'>19.95</td>
+                    <td width='40px'>Edit</td>
+                  </tr>
+                  <tr>
+                    <td>Title</td>
+                    <td>19.95</td>
+                    <td>Edit</td>
+                  </tr>
+                  <tr>
+                    <td>Title</td>
+                    <td>19.95</td>
+                    <td>Edit</td>
+                  </tr>
+                  <tr>
+                    <td>Title</td>
+                    <td>19.95</td>
+                    <td>Edit</td>
+                  </tr>
+                  <tr>
+                    <td>Title</td>
+                    <td>19.95</td>
+                    <td>Edit</td>
+                  </tr>
+                  <tr>
+                    <td>Title</td>
+                    <td>19.95</td>
+                    <td>Edit</td>
+                  </tr>
+                  <tr>
+                    <td>Title</td>
+                    <td>19.95</td>
+                    <td>Edit</td>
+                  </tr>
+                  <tr>
+                    <td>Title</td>
+                    <td>19.95</td>
+                    <td>Edit</td>
+                  </tr>
+                  <tr>
+                    <td>Title</td>
+                    <td>19.95</td>
+                    <td>Edit</td>
+                  </tr>
+                  <tr>
+                    <td>Title</td>
+                    <td>19.95</td>
+                    <td>Edit</td>
+                  </tr>
+                </table>
+              </div>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <!--end variable list Container-->
+  
+      <div id='sectionBreak'></div>
+  
+      <div id='simulateFinanceBar'>
+        <!--start simulate finance section -->
+        <table>
+          <tr>
+            <td><input type="date" style='width:140px; font-family: "roboto";'></td>
+            <td><input type="date" style='width:140px; font-family: "roboto";'></td>
+            <td><input type="button" value='Run Simulation'></input>
+            </td>
+          </tr>
+          <tr>
+            <td><span id='inputContainerLabels'>Start Date</span></td>
+            <td><span id='inputContainerLabels'>End Date</span></td>
+            <td></td>
+          </tr>
+        </table>
+      </div>
+      <!--end simulate finance section -->
+  
+    <div id='sectionBreak'></div>
+  
+      <!--start weekly report section -->
+      <div id='weeklyReportContainer'>
+        <div class='sectionHead' style='padding-left:10px;padding-bottom:8px;'>Weekly Report</div>
+        <div id='fullWidthBar' style='margin-left:10px;width:778px'></div>
+        <table width='100%'>
+          <tr>
+            <td width='200px' valign='top' id='weeklyReportTitlesContainer'>
+              <table id='weeklyReportTitles'>
+                <tr>
+                  <td id='weeklyReportTitlePlaceholder'></td>
+                </tr>
+                <tr>
+                  <td>Month</td>
+                </tr>
+                <tr>
+                  <td>Income</td>
+                </tr>
+                <tr>
+                  <td>Cost</td>
+                </tr>
+                <tr>
+                  <td>Net</td>
+                </tr>
+                <tr>
+                  <td>Savings</td>
+                </tr>
+              </table>
+            </td>
+            <td valign='top' width='400px'>
+              <div id='weeklyReportTableContainer'>
+                <table valign='top' id='weeklyReportTable'>
+                  <tr>
+                    <td id='weeklyReportColumnHead'><b>12/30/16<br>12/30/16</b></td>
+                    <td id='weeklyReportColumnHead'><b>12/30/16<br>12/30/16</b></td>
+                    <td id='weeklyReportColumnHead'><b>12/30/16<br>12/30/16</b></td>
+                    <td id='weeklyReportColumnHead'><b>12/30/16<br>12/30/16</b></td>
+                    <td id='weeklyReportColumnHead'><b>12/30/16<br>12/30/16</b></td>
+                    <td id='weeklyReportColumnHead'><b>12/30/16<br>12/30/16</b></td>
+                    <td id='weeklyReportColumnHead'><b>12/30/16<br>12/30/16</b></td>
+                    <td id='weeklyReportColumnHead'><b>12/30/16<br>12/30/16</b></td>
+                    <td id='weeklyReportColumnHead'><b>12/30/16<br>12/30/16</b></td>
+                    <td id='weeklyReportColumnHead'><b>12/30/16<br>12/30/16</b></td>
+                    <td id='weeklyReportColumnHead'><b>12/30/16<br>12/30/16</b></td>
+                    <td id='weeklyReportColumnHead'><b>12/30/16<br>12/30/16</b></td>
+                    <td id='weeklyReportColumnHead'><b>12/30/16<br>12/30/16</b></td>
+                    <td id='weeklyReportColumnHead'><b>12/30/16<br>12/30/16</b></td>
+                    <td id='weeklyReportColumnHead'><b>12/30/16<br>12/30/16</b></td>
+                    <td id='weeklyReportColumnHead'><b>12/30/16<br>12/30/16</b></td>
+                    <td id='weeklyReportColumnHead'><b>12/30/16<br>12/30/16</b></td>
+                    <td id='weeklyReportColumnHead'><b>12/30/16<br>12/30/16</b></td>
+                    <td id='weeklyReportColumnHead'><b>12/30/16<br>12/30/16</b></td>
+                    <td id='weeklyReportColumnHead'><b>12/30/16<br>12/30/16</b></td>
+                    <td id='weeklyReportColumnHead'><b>12/30/16<br>12/30/16</b></td>
+                    <td id='weeklyReportColumnHead'><b>12/30/16<br>12/30/16</b></td>
+                    <td id='weeklyReportColumnHead'><b>12/30/16<br>12/30/16</b></td>
+                    <td id='weeklyReportColumnHead'><b>12/30/16<br>12/30/16</b></td>
+                    <td id='weeklyReportColumnHead'><b>12/30/16<br>12/30/16</b></td>
+                  </tr>
+                  <tr>
+                    <td>March</td>
+                    <td>March</td>
+                    <td>March</td>
+                    <td>March</td>
+                    <td>March</td>
+                    <td>March</td>
+                    <td>March</td>
+                    <td>March</td>
+                    <td>March</td>
+                    <td>March</td>
+                    <td>March</td>
+                    <td>March</td>
+                    <td>March</td>
+                    <td>March</td>
+                    <td>March</td>
+                    <td>March</td>
+                    <td>March</td>
+                    <td>March</td>
+                    <td>March</td>
+                    <td>March</td>
+                    <td>March</td>
+                    <td>March</td>
+                    <td>March</td>
+                    <td>March</td>
+                    <td>March</td>
+                  </tr>
+                  <tr>
+                    <td>19.95</td>
+                    <td>19.95</td>
+                    <td>19.95</td>
+                    <td>19.95</td>
+                    <td>19.95</td>
+                    <td>19.95</td>
+                    <td>19.95</td>
+                    <td>19.95</td>
+                    <td>19.95</td>
+                    <td>19.95</td>
+                    <td>19.95</td>
+                    <td>19.95</td>
+                    <td>19.95</td>
+                    <td>19.95</td>
+                    <td>19.95</td>
+                    <td>19.95</td>
+                    <td>19.95</td>
+                    <td>19.95</td>
+                    <td>19.95</td>
+                    <td>19.95</td>
+                    <td>19.95</td>
+                    <td>19.95</td>
+                    <td>19.95</td>
+                    <td>19.95</td>
+                    <td>19.95</td>
+                  </tr>
+                  <tr>
+                    <td>19.95</td>
+                    <td>19.95</td>
+                    <td>19.95</td>
+                    <td>19.95</td>
+                    <td>19.95</td>
+                    <td>19.95</td>
+                    <td>19.95</td>
+                    <td>19.95</td>
+                    <td>19.95</td>
+                    <td>19.95</td>
+                    <td>19.95</td>
+                    <td>19.95</td>
+                    <td>19.95</td>
+                    <td>19.95</td>
+                    <td>19.95</td>
+                    <td>19.95</td>
+                    <td>19.95</td>
+                    <td>19.95</td>
+                    <td>19.95</td>
+                    <td>19.95</td>
+                    <td>19.95</td>
+                    <td>19.95</td>
+                    <td>19.95</td>
+                    <td>19.95</td>
+                    <td>19.95</td>
+                  </tr>
+                  <tr>
+                    <td>19.95</td>
+                    <td>19.95</td>
+                    <td>19.95</td>
+                    <td>19.95</td>
+                    <td>19.95</td>
+                    <td>19.95</td>
+                    <td>19.95</td>
+                    <td>19.95</td>
+                    <td>19.95</td>
+                    <td>19.95</td>
+                    <td>19.95</td>
+                    <td>19.95</td>
+                    <td>19.95</td>
+                    <td>19.95</td>
+                    <td>19.95</td>
+                    <td>19.95</td>
+                    <td>19.95</td>
+                    <td>19.95</td>
+                    <td>19.95</td>
+                    <td>19.95</td>
+                    <td>19.95</td>
+                    <td>19.95</td>
+                    <td>19.95</td>
+                    <td>19.95</td>
+                    <td>19.95</td>
+                  </tr>
+                  <tr>
+                    <td>19.95</td>
+                    <td>19.95</td>
+                    <td>19.95</td>
+                    <td>19.95</td>
+                    <td>19.95</td>
+                    <td>19.95</td>
+                    <td>19.95</td>
+                    <td>19.95</td>
+                    <td>19.95</td>
+                    <td>19.95</td>
+                    <td>19.95</td>
+                    <td>19.95</td>
+                    <td>19.95</td>
+                    <td>19.95</td>
+                    <td>19.95</td>
+                    <td>19.95</td>
+                    <td>19.95</td>
+                    <td>19.95</td>
+                    <td>19.95</td>
+                    <td>19.95</td>
+                    <td>19.95</td>
+                    <td>19.95</td>
+                    <td>19.95</td>
+                    <td>19.95</td>
+                    <td>19.95</td>
+                  </tr>
+                </table>
+            </td>
+          </tr>
+          <tr>
+            <td colspan='2'>
+              <div style='width:100px;'></div>
+            </td>
+          </tr>
+        </table>
+        </div>
+  <div id='sectionBreak'></div>
+        <div style='width:800px;height:800px;background-color:rgba(255,255,255,.1);'>&nbsp;</div>
+      </div>
+  
+  
+      <div class="modal fade" id="addCustomIncomeModal" role="dialog">
+        <!--Custom Income Modal -->
+        <div class="modal-dialog modal-lg">
+          <div class="modal-content" id='addCustomIncomeModalContents'>
+            <!--start modal contents -->
+            <button type="button" class="close" id='addCustomIncomeModalClose' data-dismiss="modal" style='padding:6px;'>&times;</button>
+            <div id='addCustomIncomeModalHead'>Custom Income</div>
+            <div id='fullWidthBar'></div>
+            <!--divider-->
+            <div style='margin-bottom:6px;'>
+              <!--start name section -->
+              <span id='addCustomIncomeModalSubtitles'>Label</span>
+            </div>
+            <table style='margin-left:10px;'>
+              <tr style='width:100%;height:32px;'>
+                <td style='padding-right:10px;' valign='top'><span style='line-height:2.5;' id='inputContainerLabels'>Name of Income:</span></td>
+                <td valign='top' colspan='4'><input id='newCustomIncomeLabel' type="text" style='width:210px; font-family: "roboto";'></td>
+              </tr>
+            </table>
+            <!--end name section -->
+            <div id='fullWidthBar'></div>
+            <!--divider-->
+            <div style='margin-bottom:6px;'>
+              <!--start rate & schedule section -->
+              <span id='addCustomIncomeModalSubtitles'>Rate and Schedule</span>
+            </div>
+            <div style='margin-bottom:8px;'>
+              <span id='addCustomIncomeModalRateLabel'>Pay Rate*</span>
+              <span style='margin-left:80px;'>$ <input id='newCustomIncomeRate' type="number" step="0.01" placeholder="xx.xx" style='width:80px;'></span>
+            </div>
+            <span style='float:right;margin-bottom:6px;color:#999;' id='inputContainerLabels'>*Leave hours (below) blank to use pay rate as total income.</span>
+            <div style='clear:both;' id='fullWidthBar'></div>
+            <!--divider-->
+            <table id='addCustomIncomeModalDateTable'>
+              <tr>
+                <td><span>Sun:</span></td>
+                <td><input id='newCustomIncomeHours1' type="number" step="0.01" placeholder="xx.xx"><span>Hours</span></td>
+              </tr>
+              <tr>
+                <td><span>Mon:</span></td>
+                <td><input id='newCustomIncomeHours2' type="number" step="0.01" placeholder="xx.xx"><span>Hours</span></td>
+              </tr>
+              <tr>
+                <td><span>Tue:</span></td>
+                <td><input id='newCustomIncomeHours3' type="number" step="0.01" placeholder="xx.xx"><span>Hours</span></td>
+              </tr>
+              <tr>
+                <td><span>Wed:</span></td>
+                <td><input id='newCustomIncomeHours4' type="number" step="0.01" placeholder="xx.xx"><span>Hours</span></td>
+              </tr>
+              <tr>
+                <td><span>Thu:</span></td>
+                <td><input id='newCustomIncomeHours5' type="number" step="0.01" placeholder="xx.xx"><span>Hours</span></td>
+              </tr>
+              <tr>
+                <td><span>Fri:</span></td>
+                <td><input id='newCustomIncomeHours6' type="number" step="0.01" placeholder="xx.xx"><span>Hours</span></td>
+              </tr>
+              <tr>
+                <td><span>Sat:</span></td>
+                <td><input id='newCustomIncomeHours7' type="number" step="0.01" placeholder="xx.xx"><span>Hours</span></td>
+              </tr>
+            </table>
+            <!--end rate & schedule section -->
+            <div id='fullWidthBar'></div>
+            <!--divider-->
+            <div style='margin-bottom:4px;'>
+              <!--start pay period section -->
+              <span id='addCustomIncomeModalSubtitles'>Reoccurs</span>
+            </div>
+            <table width='100%' style='margin-bottom:6px;'>
+              <tr>
+                <td><input type="radio" name="period" value="1"> <span id='inputContainerLabels'>Weekly</span></td>
+                <td><input type="radio" name="period" value="2"> <span id='inputContainerLabels'>Bi-Weekly</span></td>
+                <td><input type="radio" name="period" value="3"> <span id='inputContainerLabels'>Monthly</span></td>
+                <td>
+                  <input id="incomeModalHiddenTermRadio" type="radio" name="period" value="0">
+                  <span id='inputContainerLabels'> Days&nbsp;</span>
+                  <input id='incomeModalDaysTextBox' type="number" step="1" min="1" placeholder="xx" style='width:40px;' onclick='checkHidden("#incomeModalHiddenTermRadio");'>
+                </td>
+              </tr>
+            </table>
+            <!--end pay period section -->
+            <div id='fullWidthBar'></div>
+            <!--divider-->
+            <div style='margin-bottom:6px;'>
+              <!--start pay term section -->
+              <span id='addCustomIncomeModalSubtitles'>Payment Term</span>
+            </div>
+            <table width='100%'>
+              <tr>
+                <td><input type="date" style='width:140px; font-family: "roboto";'></td>
+                <td><input type="date" style='width:140px; font-family: "roboto";' id='incomeModalEndTerm'></td>
+                <td><input type='checkbox' id='incomeModalInfiniteTerm'></td>
+              </tr>
+              <tr>
+                <td><span id='inputContainerLabels' title='The first day that hours are counted.'>Start Date</span></td>
+                <td><span id='inputContainerLabels' title='The last day that hours accrue.'>End Date</span></td>
+                <td><span id='inputContainerLabels'>&#8734;</span></td>
+              </tr>
+            </table>
+            <div style='height:8px;'></div>
+            <table width='100%'>
+              <tr>
+                <td><input type="number" step="0.01" placeholder="xx.xx" style='width:54px;'><span id='inputContainerLabels' style='margin-left:10px;'>Days</span></td>
+                <td><input type="button" style='float:right;margin-right:10px;' value='Add Income'></td>
+              </tr>
+              <tr>
+                <td><span id='inputContainerLabels' title='The number of days before payment is received.'>Pay Offset</span></td>
+              </tr>
+            </table>
+            <!--end pay term section -->
+          </div>
+          <!--end modal contents -->
+        </div>
+      </div>
+      <!--End Custom Income Modal -->
+  
+      <div>Ideas:<br><br> zoom (modal) on click week label to see detailed report of a week<br><br> create, but hide rows on weekly report for each charge and each income included in calc of date range<br><br>
+      </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
     <div class="aboutHam">
       <p>In todays competitive environment, collaboration and partnering is vital across a multitude of industries and interest areas. HAM's ability to partner and collaborate internally within an organization for strategy success is how are clients succeed.</p>
       <p>Our goal is to create an outstanding customer experience by leveraging our strategic alliances and partnerships in the HAM network. This allows us to offer a broader range of expertise to our clients by bringing their strength to the project.</p>
       <p>Ham has over 10 years experience partnering with strategic alliances to tackle complex, high-stakes projects and collaborate to deliver amazing results.</p>
     </div>
-
-    <div class="container"><!-- This element is optional -->
-      <table id="tk-crud-table" class="tk-crud-table"></table>
-    </div>
-    <div class="text-center">
-      Commands:
-      Press [Enter] key at the last line to create new line.<br />
-      At the last input, press [Tab] key to create new line.<br />
-      Edit any lines then focus-out on the input to update.<br />
-      Press [Delete] button at the line (Except last line) to delete.
-    </div>
-
   </main>
   <footer>
     <img src="./assets/images/winter0.jpg" alt="winter setting" width="100%">
