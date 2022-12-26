@@ -1,5 +1,6 @@
 var hoveredOnReport = false;
 
+
 $(window).load(function() {
   $(document).mouseup(function(e) {
     $('.retractOnUnfocus').each(function(index, object) {

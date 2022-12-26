@@ -195,14 +195,13 @@ Table{
 }
 
 .inputContainerLabels,
-#inputContainerAdvancedLabel {
+.inputContainerAdvancedLabel {
   font-size: 8pt;
 }
 
-
 /*add income advanced pullout*/
 
-#inputContainerAdvancedLabel {
+.inputContainerAdvancedLabel {
   text-decoration: none;
 }
 
