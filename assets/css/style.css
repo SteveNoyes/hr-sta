@@ -456,7 +456,7 @@ Table{
 /* #weeklyReportTable{
 } */
 
-#weeklyReportColumnHead{
+.weeklyReportColumnHead{
   border-bottom:1px solid #ccc;
   font-size:8pt !important;
   padding-top:5px !important;
