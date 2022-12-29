@@ -8,7 +8,7 @@ body {
   margin: 0px;
 }
 
-/* Nav Bar */
+/* Nav Bar Style */
 
 .nav {
   height: 50px;
@@ -54,6 +54,8 @@ body {
 }
 
 /* Media Queries */
+/* Mobile First, 600px Breakpoint */
+
 @media (max-width:600px) {
   .nav > .nav-btn {
     display: inline-block;
@@ -131,7 +133,7 @@ Table{
   border-collapse: separate !important;
 }
 
-/*general use*/
+/* General Use Styles */
 
 .fullWidthBar {
   width: 100%;
